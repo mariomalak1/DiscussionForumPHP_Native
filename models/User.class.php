@@ -16,6 +16,15 @@ class User{
 		return $this->password;
 	}
 
+
+	public function setID($id_){
+		return $this->ID = $id_;
+	}
+
+	public function getID(){
+		return $this->$ID;
+	}
+
 	public function __construct($name, $password){
 		$this->password = $password;
 		$this->username = $name;

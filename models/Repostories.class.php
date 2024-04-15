@@ -3,6 +3,8 @@
 
 namespace Repostories;
 
+
+
 class SqlConnector{
 
 	public static function executeQueryOnDataBase($sql, $s, $params){
@@ -101,6 +103,42 @@ class UserRepostory{
 		$sql = "UPDATE `users` SET `password`= ?, WHERE `username` = ?";
 		$s = "sss";
 		$result = SqlConnector::executeQueryOnDataBase($sql, $s, array($newPassword, $username));
+	}
+
+
+	public static function getAllUsersLikeUsername($username){
+		$sql = "SELECT * FROM `users` WHERE `username` LIKE ?";
+		$s = "s";
+		$result = SqlConnector::executeQueryOnDataBase($sql, $s, array("%" . $username . "%"));
+		$users = array();
+        while ($row = $result->fetch_assoc() ) {
+        	$user = new \Models\User($row["username"], $row["password"]);
+        	$user->setID($row["userID"]);
+        	$user->lastLogin = $row["lastLogin"];
+        	$user->firstTimeLogin = $row["firstTimeLogin"];
+        	$user->activeNow = $row["activeNow"] ? true : false;
+        	array_push($users, $user);
+        }
+        return $users;
+	}
+
+	public static function getSpecificUserMatchUsername($username){
+		$sql = "SELECT * FROM `users` WHERE `username` = ?";
+		$s = "s";
+		$result = SqlConnector::executeQueryOnDataBase($sql, $s, array($username));
+		$row = $result->fetch_assoc();
+		if ($row) {
+			$user = new \Models\User($row["username"], $row["password"]);
+			$user->setID($row["userID"]);
+        	$user->lastLogin = $row["lastLogin"];
+        	$user->firstTimeLogin = $row["firstTimeLogin"];
+        	$user->activeNow = $row["activeNow"] ? true : false;
+        	print_r($user);
+        	return $user;
+		}else{
+			echo "no user found with this username";
+			return null;
+		}
 	}
 }
 

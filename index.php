@@ -7,10 +7,12 @@
 	// $main = new UserRepostory\Repostory();
 
 
-	$user = new Models\User("mario", "mariomalak123");
-	$user->save();
-	Repostories\UserRepostory::createUser($user);
+	// $user = new Models\User("malak", "mariomalak123");
+	// $user->save();
 
+	// Repostories\UserRepostory::createUser($user);
+	Repostories\UserRepostory::updateUserOtherData("mario", false);
+	Repostories\UserRepostory::getAllUsersLikeUsername("m");
 	// print_r($main);
 	// $ma = new UserFF\UserRepostory();
 	// $ma->createUser();
