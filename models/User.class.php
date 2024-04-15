@@ -2,7 +2,7 @@
 	
 namespace Models;
 
-class UserSite{
+class User{
 	private int $ID;
 	private string $password;
 	

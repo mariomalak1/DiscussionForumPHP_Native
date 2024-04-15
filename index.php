@@ -7,7 +7,7 @@
 	// $main = new UserRepostory\Repostory();
 
 
-	$user = new Models\UserSite("mario", "mariomalak123");
+	$user = new Models\User("mario", "mariomalak123");
 	$user->save();
 	Repostories\UserRepostory::createUser($user);
 
