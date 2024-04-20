@@ -22,7 +22,7 @@ class User{
 	}
 
 	public function getID(){
-		return $this->$ID;
+		return $this->ID;
 	}
 
 	public function __construct($name, $password){

@@ -1,6 +1,6 @@
 <?php
 	
-	require "models\Repostories.class.php";
+	require "models\Repostories\UserRepostory.class.php";
 	require_once "models\User.class.php";
 
 
@@ -11,8 +11,8 @@
 	// $user->save();
 
 	// Repostories\UserRepostory::createUser($user);
-	Repostories\UserRepostory::updateUserOtherData("mario", false);
-	Repostories\UserRepostory::getAllUsersLikeUsername("m");
+	Models\Repostories\UserRepostory::updateUserOtherData("mario", false);
+	Models\Repostories\UserRepostory::getAllUsersLikeUsername("m");
 	// print_r($main);
 	// $ma = new UserFF\UserRepostory();
 	// $ma->createUser();
